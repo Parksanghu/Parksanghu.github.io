@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanghun Park - Robotics & AI Researcher</title>
+    <title>Sanghun Park - Mechanics & AI Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,60 +13,38 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: #000;
+            background: #fff;
+            font-size: 16px;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            background: #fff;
         }
 
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem 3rem;
             text-align: center;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
+            border-bottom: 1px solid #e5e5e5;
         }
 
         .name {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
         }
 
         .title {
-            font-size: 1.3rem;
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 2rem;
         }
 
         .contact-info {
@@ -73,23 +52,65 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.95rem;
         }
 
-        .main-content {
-            padding: 0;
+        /* Navigation */
+        .nav-section {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            padding: 0 2rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: #666;
+            border: none;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-btn:hover {
+            color: #000;
+        }
+
+        .nav-btn.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        /* Main content */
         .section {
-            padding: 2.5rem 2rem;
-            border-bottom: 1px solid #eee;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e5e5e5;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
         }
 
         .section:last-child {
@@ -98,126 +119,103 @@
 
         .section-title {
             font-size: 1.8rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-left: 1rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            text-align: center;
         }
 
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 2rem;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            border-radius: 2px;
+        /* Interest cards */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .education-item, .experience-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .interest-card {
+            border: 1px solid #e5e5e5;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
         }
 
-        .education-item:hover, .experience-item:hover {
+        .interest-card:hover {
+            border-color: #000;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .institution {
-            font-size: 1.3rem;
+        .interest-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .degree, .position {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #34495e;
-            margin-bottom: 0.3rem;
-        }
-
-        .date, .duration {
-            font-size: 0.95rem;
-            color: #7f8c8d;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .gpa {
-            font-size: 0.9rem;
-            color: #27ae60;
-            font-weight: 600;
-        }
-
-        .description {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .description ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .description li {
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #e74c3c;
-            margin-bottom: 1.5rem;
-        }
-
-        .paper-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .authors {
-            font-size: 0.95rem;
-            color: #34495e;
-            margin-bottom: 0.3rem;
-        }
-
-        .venue {
-            font-size: 0.9rem;
-            color: #e74c3c;
-            font-weight: 500;
             margin-bottom: 1rem;
         }
 
+        .interest-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-count {
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 500;
+        }
+
+        /* Content cards */
+        .content-card {
+            border: 1px solid #e5e5e5;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .content-card:hover {
+            border-color: #ccc;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Skills */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .skill-category {
-            background: #f8f9fa;
+            border: 1px solid #e5e5e5;
             padding: 1.5rem;
-            border-radius: 10px;
-            border-top: 4px solid #9b59b6;
+            background: #fff;
         }
 
         .skill-category h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #2c3e50;
             margin-bottom: 1rem;
         }
 
@@ -228,58 +226,145 @@
         }
 
         .skill-tag {
-            background: #3498db;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            padding: 0.4rem 0.8rem;
             font-size: 0.85rem;
-            font-weight: 500;
+            color: #666;
+            transition: all 0.2s ease;
         }
 
-        .activities-list {
+        .skill-tag:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* Activities */
+        .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .activity-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #f39c12;
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
         }
 
-        .activity-name {
-            font-size: 1.1rem;
+        .modal-content {
+            background: #fff;
+            margin: 3% auto;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border: 1px solid #e5e5e5;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-        }
-
-        .activity-role {
-            font-size: 0.95rem;
-            color: #34495e;
-            margin-bottom: 0.3rem;
-        }
-
-        .activity-date {
-            font-size: 0.9rem;
-            color: #7f8c8d;
             margin-bottom: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                margin: 1rem;
-                border-radius: 10px;
-            }
+        .modal-subtitle {
+            font-size: 1rem;
+            color: #666;
+        }
 
+        .close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s ease;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-item {
+            border: 1px solid #e5e5e5;
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-details {
+            background: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .project-details strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .header {
-                padding: 2rem 1rem;
+                padding: 3rem 1rem 2rem;
             }
 
             .name {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .contact-info {
@@ -291,247 +376,555 @@
                 padding: 2rem 1rem;
             }
 
-            .skills-container {
+            .nav-container {
+                padding: 0 1rem;
+                overflow-x: auto;
+            }
+
+            .nav-btn {
+                padding: 0.8rem 1.5rem;
+                white-space: nowrap;
+            }
+
+            .interests-grid,
+            .skills-container,
+            .activities-grid {
                 grid-template-columns: 1fr;
             }
 
-            .activities-list {
-                grid-template-columns: 1fr;
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
             }
         }
 
+        /* Simple animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
+            animation: fadeIn 0.5s ease forwards;
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
+        }
+
+        /* Highlight for publications */
+        .highlight {
+            background: #f5f5f5;
+            padding: 0.1rem 0.3rem;
+            border: 1px solid #e5e5e5;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-content fade-in">
-                <h1 class="name">Sanghun Park</h1>
-                <p class="title">Robotics & AI Researcher • M.S. Electrical Engineering</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>🎓</span>
-                        <span>KAIST Graduate Student</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>🔬</span>
-                        <span>Robot Learning & Control</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>🌐</span>
-                        <span>Seoul, South Korea</span>
-                    </div>
+            <h1 class="name">Sanghun Park</h1>
+            <p class="title">Mechanics & AI Researcher</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Seoul, South Korea</span>
+                </div>
+                <div class="contact-item">
+                    <span>🎓</span>
+                    <span>KAIST Graduate Student</span>
+                </div>
+                <div class="contact-item">
+                    <span>🔬</span>
+                    <span>Learning & Control</span>
                 </div>
             </div>
         </div>
 
+        <nav class="nav-section">
+            <div class="nav-container">
+                <button class="nav-btn active" onclick="showSection('research-interests')">Research</button>
+                <button class="nav-btn" onclick="showSection('education')">Education</button>
+                <button class="nav-btn" onclick="showSection('publications')">Publications</button>
+                <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+                <button class="nav-btn" onclick="showSection('activities')">Activities</button>
+            </div>
+        </nav>
+
         <div class="main-content">
-            <section class="section fade-in">
+            <section id="research-interests" class="section active">
+                <h2 class="section-title">Research Interests</h2>
+                <div class="interests-grid">
+                    <div class="interest-card" onclick="openModal('slam-modal')">
+                        <h3 class="interest-title">SLAM & Navigation & Vision</h3>
+                        <p class="interest-desc">
+                            Simultaneous Localization and Mapping algorithms for autonomous navigation in complex environments. 
+                            Focus on LiDAR-based systems and real-time optimization.
+                        </p>
+                    </div>
+                    
+                    <div class="interest-card" onclick="openModal('robotics-modal')">
+                        <h3 class="interest-title">Learning & Control</h3>
+                        <p class="interest-desc">
+                            Continual learning, reinforcement learning, motion planning, and uncertainty quantification 
+                            for robust robotic manipulation and autonomous behavior.
+                        </p>
+                    </div>
+                    
+                    <div class="interest-card" onclick="openModal('data-modal')">
+                        <h3 class="interest-title">Real World Solutions</h3>
+                        <p class="interest-desc">
+                            Data analysis, anomaly detection, and CBM/CBM+ solutions 
+                            for industrial applications.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
                 <h2 class="section-title">Education</h2>
-                <div class="education-item">
-                    <div class="institution">KAIST</div>
-                    <div class="degree">M.S. in Electrical Engineering</div>
-                    <div class="date">Expected Graduation: February 2026</div>
-                    <div class="gpa">GPA: 4.0/4.3</div>
-                    <div class="description">
-                        Supervised by Prof. SooJean Han<br>
-                        Research focus: Continual Reinforcement Learning for Robot Control
+                <div class="content-card">
+                    <div class="card-title">KAIST</div>
+                    <div class="card-subtitle">M.S. in Electrical Engineering</div>
+                    <div class="card-meta">Expected Feb 2026 | GPA: 4.0/4.3 | Supervisor: Prof. SooJean Han</div>
+                    <div class="card-content">
+                        Research focus on continual learning and understanding AI learning behavior through mathematical and statistical frameworks. 
+                        Developing theoretical foundations and computational methods to explain how artificial agents learn, retain knowledge, 
+                        and adapt to new tasks without losing previously acquired skills.
                     </div>
                 </div>
-                <div class="education-item">
-                    <div class="institution">Korea University</div>
-                    <div class="degree">B.S. in Mechanical Engineering</div>
-                    <div class="date">Graduation: February 2024</div>
-                    <div class="gpa">GPA: 4.13/4.5</div>
+                
+                <div class="content-card">
+                    <div class="card-title">Korea University</div>
+                    <div class="card-subtitle">B.S. in Mechanical Engineering</div>
+                    <div class="card-meta">Feb 2024 | GPA: 4.13/4.5 | Great Honors</div>
+                    <div class="card-content">
+                        Specialized in robotics, control systems, and mechanical design. Strong foundation in 
+                        mathematics, physics, and engineering principles.
+                    </div>
                 </div>
             </section>
 
-            <section class="section fade-in">
+            <section id="publications" class="section">
                 <h2 class="section-title">Publications</h2>
-                <div class="publication-item">
-                    <div class="paper-title">Approximate Orthogonal Gradient Descent for the Continual Reinforcement Learning of Robot Control</div>
-                    <div class="authors">Sanghun Park, SooJean Han</div>
-                    <div class="venue">CKAIA 2025</div>
-                    <div class="description">
-                        Developed a computationally efficient approximation of orthogonal gradient descent for robot control tasks. The method uses cosine similarity between new task gradients and sampled past gradients from a memory buffer to measure confidence in orthogonality. By projecting onto the orthogonal direction of sampled gradients and weighting by cosine similarity, the approach efficiently approximates orthogonal gradient descent. Validated on Mujoco Reacher and Ant environments.
+                <div class="content-card">
+                    <div class="card-title">Approximate Orthogonal Gradient Descent for Continual Reinforcement Learning</div>
+                    <div class="card-subtitle">Sanghun Park, SooJean Han</div>
+                    <div class="card-meta">CKAIA 2025</div>
+                    <div class="card-content">
+                        ABSTRACT: While there has been abundant literature on continual learning for supervised learning scenarios, 
+                        robotic control scenarios introduce a number of challenges including combination with reinforcement learning and continuous state/action spaces.
+                        This paper propoposes Approximate Orthogonal Gradient Descent (AOGD), a novel continual reinforcement learning method which efficiently 
+                        approximates gradient orthogonalization through cosine similarity-based sampling and weighting, constraining new task gradients to preserve previous 
+                        task performance while enabling efficient learning of new tasks. We numerically evaluate AOGD on multiple robot environments performing consecutive tasks, 
+                        and demonstrate that AOGD significantly reduces catastrophic forgetting and achieves more stable learning compared to existing continual learning baselines. 
                     </div>
                 </div>
             </section>
 
-            <section class="section fade-in">
-                <h2 class="section-title">Research Experience</h2>
-                <div class="experience-item">
-                    <div class="position">Uncertainty Quantification in Robot Motion Planning</div>
-                    <div class="institution">ETRI Collaboration</div>
-                    <div class="duration">July 2025 – Present</div>
-                    <div class="description">
-                        <strong>Role:</strong> Project Manager
-                        <ul>
-                            <li>Applied Conformal Prediction to quantify uncertainty in motion planning models using Isaac Sim/Lab (Franka Kitchen)</li>
-                            <li>Trained robot motion planning policy using Reinforcement Learning and Denoising Diffusion Probabilistic Models (DDPM)</li>
-                            <li>Implemented TD3 + BC algorithm with expert data collected from Inverse Kinematics trajectories</li>
-                            <li>Integrated CLIP, PointNet, and GraspNet for computing desired grasp poses of end effector</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="position">Micro LED Chip Transfer with Fluidic Self Assembly</div>
-                    <div class="institution">SAIT (Samsung Advanced Institute of Technology)</div>
-                    <div class="duration">January 2023 – June 2023</div>
-                    <div class="description">
-                        <ul>
-                            <li>Developed simulation formulation for Fluidic Self Assembly process using COMSOL</li>
-                            <li>Compared simulation data with experimental results to explore fundamental mechanisms</li>
-                            <li>Mapped chip height variations from silicon wafer and analyzed velocity-force relationships</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section fade-in">
-                <h2 class="section-title">Internship Experience</h2>
-                <div class="experience-item">
-                    <div class="position">Intern, CBM Solution Team</div>
-                    <div class="institution">Hyundai Rotem</div>
-                    <div class="duration">July 2025 – August 2025</div>
-                    <div class="description">
-                        <ul>
-                            <li>Performed vibration data exploratory data analysis (EDA) and anomaly detection for railway vehicles</li>
-                            <li>Developed pantograph anomaly detection system using Detectron2 instance segmentation</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section fade-in">
-                <h2 class="section-title">Coursework & Projects</h2>
-                <div class="experience-item">
-                    <div class="position">Mobile Robotics and Autonomous Navigation</div>
-                    <div class="description">
-                        <ul>
-                            <li>Enhanced D-LIO open-source SLAM system for complex indoor environments (corridors, stairs)</li>
-                            <li>Responsibilities: Problem diagnosis, algorithm redesign, implementation, and team collaboration</li>
-                            <li>Tools: MATLAB, ROS, C++</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="position">Intelligent Robot Design Lab</div>
-                    <div class="description">
-                        <ul>
-                            <li>End-to-End Autonomous Driving in CARLA simulation environment</li>
-                            <li>Graph SLAM implementation and optimization</li>
-                            <li>Waypoint Tracking Odometry Controller Design</li>
-                            <li>Franka Kitchen Teleoperation Controller development</li>
-                            <li>Tools: ROS/ROS2, Python, C++</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="position">AI & Robotics Summer School 2025 (KROS)</div>
-                    <div class="description">
-                        <ul>
-                            <li>Designed object grasp model using CLIP in Isaac Sim Franka Kitchen environment</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section fade-in">
+            <section id="skills" class="section">
                 <h2 class="section-title">Skills</h2>
                 <div class="skills-container">
                     <div class="skill-category">
-                        <h3>Programming & Software</h3>
+                        <h3>Programming</h3>
                         <div class="skill-list">
                             <span class="skill-tag">Python</span>
                             <span class="skill-tag">C++</span>
                             <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">ROS/ROS2</span>
-                            <span class="skill-tag">COMSOL</span>
                         </div>
                     </div>
+                    
                     <div class="skill-category">
-                        <h3>Languages</h3>
+                        <h3>Robotics</h3>
                         <div class="skill-list">
-                            <span class="skill-tag">Korean (Native)</span>
-                            <span class="skill-tag">English (Advanced)</span>
+                            <span class="skill-tag">ROS/ROS2</span>
+                            <span class="skill-tag">Isaac Sim</span>
+                            <span class="skill-tag">CARLA</span>
+                            <span class="skill-tag">Mujoco</span>
                         </div>
-                        <div class="description" style="margin-top: 1rem; font-size: 0.9rem;">
-                            TEPS: 471 • OPIC: IH
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>AI/ML</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Reinforcement Learning</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">SLAM</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Tools</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">COMSOL</span>
+                            <span class="skill-tag">Detectron2</span>
+                            <span class="skill-tag">Avalanche</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section fade-in">
+            <section id="activities" class="section">
                 <h2 class="section-title">Activities</h2>
-                <div class="activities-list">
-                    <div class="activity-item">
-                        <div class="activity-name">EOULSURE</div>
-                        <div class="activity-role">Automotive Design Club Member</div>
-                        <div class="activity-date">June 2018 – February 2020</div>
-                        <div class="description">
-                            <ul>
-                                <li>Participated in KSAE Baja contests in 2018 and 2019</li>
-                                <li>Enhanced knowledge of automotive structure and design through custom automotive projects</li>
-                            </ul>
+                <div class="activities-grid">
+                    <div class="content-card">
+                        <div class="card-title">EOULSURE</div>
+                        <div class="card-subtitle">Automotive Design Club</div>
+                        <div class="card-meta">Jun 2018 – Feb 2020</div>
+                        <div class="card-content">
+                            Participated in KSAE Baja contests (2018, 2019). Enhanced automotive design knowledge 
+                            through hands-on custom vehicle development projects.
                         </div>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-name">Swimming Tiger</div>
-                        <div class="activity-role">Swimming Club Member</div>
-                        <div class="activity-date">January 2023 – August 2023</div>
+                    
+                    <div class="content-card">
+                        <div class="card-title">Swimming Tiger</div>
+                        <div class="card-subtitle">Swimming Club</div>
+                        <div class="card-meta">Jan 2023 – Aug 2023</div>
+                        <div class="card-content">
+                            Competitive swimming and fitness training. 50m 30reps 45min
+                        </div>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-name">Noraeol</div>
-                        <div class="activity-role">Band Club - Electric Guitar Session</div>
+                    
+                    <div class="content-card">
+                        <div class="card-title">Noraeol</div>
+                        <div class="card-subtitle">Band Club - Electric Guitar</div>
+                        <div class="card-meta">March 2018 – Feb 2024</div>
+                        <div class="card-content">
+                            Electric guitarist performing at campus events. Creative expression and teamwork 
+                            through collaborative music performance.
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <script>
-        // Add smooth animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <!-- SLAM Modal -->
+    <div id="slam-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('slam-modal')">&times;</span>
+                <h2 class="modal-title">SLAM & Navigation</h2>
+                <p class="modal-subtitle">Simultaneous Localization and Mapping Research</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h3 class="project-title">EE585 Mobile Robotics and Autonomous Navigation</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">C++</span>
+                            <span class="project-tag">ROS</span>
+                            <span class="project-tag">MATLAB</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">Gazebo</span>
+                        </div>
+                        <div class="project-description">
+                            Comprehensive graduate course covering fundamental concepts and advanced techniques in mobile robotics, 
+                            from sensor perception and localization to SLAM and autonomous navigation systems. In final project,
+                            Hilti 2022 challenge, our team enhanced D-LIO open source code with integration of VGICP and PGO.
+                        </div>
+                        <div class="project-details">
+                            • Mobile robot kinematics and locomotion mechanisms<br>
+                            • Multi-modal perception: visual sensors, LiDAR, IMU, and feature extraction<br>
+                            • Kalman filtering and probabilistic localization algorithms<br>
+                            • Simultaneous Localization and Mapping (SLAM) implementation<br>
+                            • Path planning and autonomous navigation strategies<br>
+                            <strong>Final Project:</strong> Enhanced D-LIO SLAM system for complex indoor / outdoor environments
+                        </div>                    
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">RE510 Intelligent Robot Design Lab</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">ROS2</span>
+                            <span class="project-tag">Optimization</span>
+                        </div>
+                        <div class="project-description">
+                            <strong>Graph-based SLAM:</strong><br>
+                            Developed a graph-based SLAM system using pose graph optimization techniques for 
+                            accurate mapping and localization in dynamic environments.
+                        </div>
+                        <div class="project-details">
+                            • Backend optimization using g2o framework with Levenberg-Marquardt solver<br>
+                            • Frontend feature extraction with ORB and SIFT descriptors<br>
+                            • Robust loop closure detection using bag-of-words and geometric verification<br>
+                            • Real-time pose estimation with 30Hz update rate
+                        </div>
+                        <div class="project-description">
+                            <strong>Waypoint Tracking Follower / Controller:</strong>
+                            Designed and implemented a odometry-based waypoint tracking controller 
+                            for autonomous navigation with adaptive speed control.
+                        </div>
+                        <div class="project-details">
+                            <strong>Features:</strong><br>
+                            • Pure pursuit and Stanley controller implementations<br>
+                            • Adaptive speed control based on path curvature and obstacle proximity<br>
+                            • Robust error recovery mechanisms for GPS-denied environments<br>
+                            • Real-time trajectory optimization with sub-centimeter accuracy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.1s';
-                    entry.target.classList.add('fade-in');
+    <!-- Robotics Modal -->
+    <div id="robotics-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('robotics-modal')">&times;</span>
+                <h2 class="modal-title">Learning & Control</h2>
+                <p class="modal-subtitle">Advanced AI and Control Systems</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h3 class="project-title">Continual Reinforcement Learning</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">PyTorch</span>
+                            <span class="project-tag">Mujoco</span>
+                            <span class="project-tag">Reinforcement Learning</span>
+                        </div>
+                        <div class="project-description">
+                            Developed an approach to approximate orthogonal gradient descent for continual 
+                            reinforcement learning, addressing computational challenges in robot control.
+                        </div>
+                        <div class="project-details">
+                            <strong>Research Innovation:</strong><br>
+                            • Novel approximation method reducing computational cost by O(1/NT) vs traditional OGD<br>
+                            • Cosine similarity-based gradient orthogonality estimation with confidence weighting<br>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">AI & Robotics Summer School 2025</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">KROS</span>
+                            <span class="project-tag">Isaac Sim</span>
+                        </div>
+                        <div class="project-description">
+                            Listened to AI & Robotics Summer School 2025 lecture by KROS.
+                            Hands-on implementation of grasping robot control in Isaac Sim.
+                        </div>
+                        <div class="project-details">
+                            • Applied conformal prediction achieving 95% confidence intervals<br>
+                            • Integrated CLIP vision transformer for semantic scene understanding<br>
+                            • Trained TD3+BC policies with 10k+ expert demonstrations<br>
+                            • Managed 6-person team delivering project ahead of schedule
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <h3 class="project-title">Motion Planning Uncertainty Quantification</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">ETRI Project</span>
+                            <span class="project-tag">Isaac Sim</span>
+                            <span class="project-tag">Conformal Prediction</span>
+                            <span class="project-tag">Project Lead</span>
+                        </div>
+                        <div class="project-description">
+                            Led a team project developing uncertainty quantification methods for robot motion planning 
+                            using conformal prediction and advanced simulation environments.
+                        </div>
+                        <div class="project-details">
+                            • Applied conformal prediction achieving 95% confidence intervals<br>
+                            • Integrated CLIP vision transformer for semantic scene understanding<br>
+                            • Trained TD3+BC policies with 10k+ expert demonstrations<br>
+                            • Managed 6-person team delivering project ahead of schedule
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Franka Kitchen Manipulation</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Manipulation</span>
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">Control</span>
+                        </div>
+                        <div class="project-description">
+                            Comprehensive manipulation control system for Franka Kitchen environment with both 
+                            teleoperation and autonomous modes, featuring advanced grasp planning.
+                        </div>
+                        <div class="project-details">
+                            • Bilateral teleoperation with 1kHz force feedback control loop<br>
+                            • CLIP-based object detection and semantic understanding<br>
+                            • 7-DOF inverse kinematics solver with joint limit constraints<br>
+                            • Successfully completed 95% of kitchen manipulation tasks
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">End-to-End Autonomous Driving</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">CARLA</span>
+                            <span class="project-tag">Deep Learning</span>
+                            <span class="project-tag">Computer Vision</span>
+                        </div>
+                        <div class="project-description">
+                            Complete autonomous driving pipeline in CARLA simulation, from multi-modal perception 
+                            to control, tested across diverse weather and traffic scenarios.
+                        </div>
+                        <div class="project-details">
+                            • End-to-end neural architecture with ResNet-50 backbone<br>
+                            • Multi-modal sensor fusion: RGB cameras, LiDAR, radar, GPS<br>
+                            • Real-time object detection using YOLOv5 at 60fps<br>
+                            • Achieved 92% success rate on Town05 benchmark
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Engineering Modal -->
+    <div id="data-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('data-modal')">&times;</span>
+                <h2 class="modal-title">Real World Solutions</h2>
+                <p class="modal-subtitle">Industrial Data Analytics and Solutions</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h3 class="project-title">Hyundai Rotem CBM Solution Team Intern</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Hyundai Rotem</span>
+                            <span class="project-tag">Anomaly Detection</span>
+                        </div>
+                        <div class="project-description">
+                            <strong>Axle Bearing Vibration Data Analysis</strong>
+                            Conducted fault diagnosis of axle bearings using conventional methods and EDA
+                            for rank classification of data features to be used in OOD Detection Model.
+                        </div>
+                        <div class="project-details">
+                            • CPB (Constant Percentage Bandwidth) Spectrum Trend Analysis & Implusiveness Analysis<br>
+                            • FFT-based frequency domain analysis<br>
+                            • ANOVA & T-test for distribution shift analysis
+                        </div>
+                        <div class="project-description">
+                            <strong>Pantograph 2D Image Segmentation</strong>
+                            Advanced computer vision system for real-time pantograph anomaly detection using 
+                            Mask R-CNN.
+                        </div>
+                        <div class="project-details">
+                            • Dataset Preprocessing & Augmentation<br>
+                            • Detectron2 Mask R-CNN with ResNet50 FPN backbone<br>
+                            • Achieved 0.97+ MIOU and 0.99+ AP (IOU=0.50) performance
+                        </div>
+                    </div>
+                                        
+                    <div class="project-item">
+                        <h3 class="project-title">Computational Mechanics & Design Optimization Lab Intern</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">SAIT Research</span>
+                            <span class="project-tag">COMSOL</span>
+                            <span class="project-tag">Simulation</span>
+                        </div>
+                        <div class="project-description">
+                            Formulation of simulation framework for micro LED chip transfer using fluidic self-assembly, 
+                            with experimental validation and optimization.
+                        </div>
+                        <div class="project-details">
+                            • COMSOL Multiphysics: coupled fluid-structure interaction 2D modeling<br>
+                            • Hypothesis and validation of micro chip assembly process using simulation results<br>
+                            • Mapping of chip velocity and height from wafer to external force for faiulre analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked nav button
+            event.target.classList.add('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
-        }, observerOptions);
+        }
 
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
         });
 
-        // Add hover effects to experience items
-        document.querySelectorAll('.education-item, .experience-item, .activity-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px) scale(1.02)';
+        // Simple hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add subtle hover effects
+            const cards = document.querySelectorAll('.interest-card, .content-card, .skill-tag');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (this.classList.contains('skill-tag')) {
+                        this.style.transform = 'translateY(-1px)';
+                    } else {
+                        this.style.transform = 'translateY(-2px)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
             });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+
+            // Fade in animation for sections
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
